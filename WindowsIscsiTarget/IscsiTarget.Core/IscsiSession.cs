@@ -674,5 +674,33 @@ namespace IscsiTarget.Core
                         responsePdu.DataSegment = reportLunsData;
                         responsePdu.DataSegmentLength = reportLunsData.Length;
                         break;
-        }
-}
+                    default:
+                        Log.Warning($"[{_sessionId}] Unhandled SCSI OpCode: {scsiCommand.Cdb[0]:X2} for LUN {lunIdFromPdu}.");
+                        responsePdu.Status = ScsiStatus.CheckCondition;
+                        responsePdu.SenseData = CreateSenseData(SenseKey.IllegalRequest, Asc.InvalidCommandOperationCode, Ascq.Default);
+                        break;
+                } // End switch
+            } // End try
+            catch (Exception ex)
+            {
+                Log.Error(ex, $"[{_sessionId}] Exception processing SCSI command {scsiCommand.Cdb[0]:X2} for LUN {lunIdFromPdu}: {ex.Message}");
+                if (responsePdu != null)
+                {
+                    responsePdu.Status = ScsiStatus.CheckCondition;
+                    responsePdu.SenseData = CreateSenseData(SenseKey.AbortedCommand, Asc.InternalTargetFailure, Ascq.Default);
+                    responsePdu.DataSegment = null;
+                    responsePdu.DataSegmentLength = 0;
+                }
+            }
+            finally
+            {
+                if (responsePdu != null)
+                {
+                    await SendPduAsync(responsePdu, cancellationToken);
+                }
+                else
+                {
+                     Log.Error($"[{_sessionId}] responsePdu was unexpectedly null before sending in finally block for SCSI command {scsiCommand.Cdb[0]:X2}.");
+                }
+            }
+        } // End method HandleScsiCommandAsync
