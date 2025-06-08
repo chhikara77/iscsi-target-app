@@ -1,0 +1,51 @@
+<Window x:Class="IscsiTarget.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IscsiTarget.UI"
+        xmlns:views="clr-namespace:IscsiTarget.UI.Views"
+        mc:Ignorable="d"
+        Title="iSCSI Target Management" Height="600" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="iSCSI Target Service Control" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBlock Text="Service Status:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBlock x:Name="StatusTextBlock" Text="Unknown" VerticalAlignment="Center" FontWeight="Bold"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,10">
+            <Button x:Name="StartServiceButton" Content="Start Service" Width="100" Margin="0,0,10,0" Click="StartServiceButton_Click"/>
+            <Button x:Name="StopServiceButton" Content="Stop Service" Width="100" Click="StopServiceButton_Click"/>
+        </StackPanel>
+
+        <GroupBox Grid.Row="3" Header="Service Messages">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <TextBlock x:Name="MessagesTextBlock" TextWrapping="Wrap" MinHeight="50"/>
+            </ScrollViewer>
+        </GroupBox>
+
+        <TabControl Grid.Row="4">
+            <TabItem Header="LUN Management">
+                <views:LunManagementView/>
+            </TabItem>
+            <TabItem Header="Settings">
+                <!-- Placeholder for Settings View -->
+                <TextBlock Text="Target Settings UI will go here." Margin="10"/>
+            </TabItem>
+            <TabItem Header="Logs">
+                <!-- Placeholder for Log Viewer -->
+                <TextBlock Text="Log Viewer UI will go here." Margin="10"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

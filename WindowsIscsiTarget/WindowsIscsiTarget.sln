@@ -1,0 +1,36 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IscsiTarget.Core", "IscsiTarget.Core\IscsiTarget.Core.csproj", "{12345678-1234-1234-1234-123456789ABC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IscsiTarget.UI", "IscsiTarget.UI\IscsiTarget.UI.csproj", "{23456789-2345-2345-2345-234567890ABC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IscsiTarget.Service", "..\IscsiTarget.Service\IscsiTarget.Service.csproj", "{34567890-3456-3456-3456-345678901ABC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IscsiTarget.Shared", "..\IscsiTarget.Shared\IscsiTarget.Shared.csproj", "{45678901-4567-4567-4567-456789012ABC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12345678-1234-1234-1234-123456789ABC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12345678-1234-1234-1234-123456789ABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12345678-1234-1234-1234-123456789ABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12345678-1234-1234-1234-123456789ABC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23456789-2345-2345-2345-234567890ABC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23456789-2345-2345-2345-234567890ABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23456789-2345-2345-2345-234567890ABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23456789-2345-2345-2345-234567890ABC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34567890-3456-3456-3456-345678901ABC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34567890-3456-3456-3456-345678901ABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34567890-3456-3456-3456-345678901ABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34567890-3456-3456-3456-345678901ABC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45678901-4567-4567-4567-456789012ABC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45678901-4567-4567-4567-456789012ABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45678901-4567-4567-4567-456789012ABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45678901-4567-4567-4567-456789012ABC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

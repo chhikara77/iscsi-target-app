@@ -1,0 +1,39 @@
+<UserControl x:Class="IscsiTarget.UI.Views.LunManagementView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IscsiTarget.UI.Views"
+             xmlns:viewModels="clr-namespace:IscsiTarget.UI.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="600">
+    <UserControl.DataContext>
+        <viewModels:LunManagementViewModel/>
+    </UserControl.DataContext>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="LUN Management" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+
+        <ListView Grid.Row="1" ItemsSource="{Binding Luns}" Margin="0,0,0,10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="LUN ID" DisplayMemberBinding="{Binding LunId}" Width="60"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="150"/>
+                    <GridViewColumn Header="VHDX Path" DisplayMemberBinding="{Binding VhdxPath}" Width="200"/>
+                    <GridViewColumn Header="Size (GB)" DisplayMemberBinding="{Binding SizeBytes, Converter={StaticResource BytesToGigabytesConverter}}" Width="80"/> <!-- Assuming a converter -->
+                    <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button Content="Add LUN" Command="{Binding AddLunCommand}" Width="100" Margin="0,0,10,0"/>
+            <Button Content="Remove LUN" Command="{Binding RemoveLunCommand}" CommandParameter="{Binding SelectedLun}" Width="100"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
